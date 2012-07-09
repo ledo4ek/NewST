@@ -9,7 +9,7 @@ return array(
     'defaultController'=>'site',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'Blog',
-    'theme' => 'th2',
+    'theme' => 'wpcraft',
 	// preloading 'log' component
 	'preload'=>array('log'),
 

@@ -6576,3 +6576,9 @@ REQUEST_URI=/blog/index.php?r=post/index&view=about
 in C:\Webserver\htdocs\blog\protected\views\post\_view.php (9)
 in C:\Webserver\htdocs\blog\protected\views\post\index.php (9)
 in C:\Webserver\htdocs\blog\protected\controllers\PostController.php (165)
+2012/07/09 13:21:10 [warning] [application] Failed to set unsafe attribute "author_id" of "Post".
+in C:\Webserver\htdocs\blog\protected\controllers\PostController.php (112)
+in C:\Webserver\htdocs\blog\index.php (13)
+2012/07/09 14:07:35 [warning] [application] Failed to set unsafe attribute "author_id" of "Post".
+in C:\Webserver\htdocs\blog\protected\controllers\PostController.php (86)
+in C:\Webserver\htdocs\blog\index.php (13)
