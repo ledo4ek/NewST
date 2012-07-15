@@ -1,57 +1,61 @@
+<?php
+
+/**
+ * @var CActiveForm $form
+ * @var Post $model
+
+ */
+
+?>
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'post-form',
-	'enableAjaxValidation'=>false,
-)); ?>
+   <?php
+   $form = $this->beginWidget('CActiveForm', array(
+	  'id' => 'post-form', 'enableAjaxValidation' => true,));
+   ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
+   <?php
+   $this->widget('ext.imperavi-redactor-widget.ImperaviRedactorWidget', array(
+	  'selector' => '.redactor', 'options' => array(
+		 'lang' => 'ru', 'css' => 'wym.css'),))
+   ?>
 
+   <?php // <p class="note">Поля с пометкой <span class="required">*</span> являются обязательными для заполнения.</p> ?>
 
-	<?php echo $form->errorSummary($model); ?>
+   <?php //echo $form->errorSummary($model);  ?>
 
-	<div class="row">
-    <?php echo $form->labelEx($model,'title'); ?>
-    <?php echo $form->textField($model,'title',array('size'=>60,'maxlength'=>128)); ?>
-    <?php echo $form->error($model,'title'); ?>
-</div>
+   <div class="row">
+	  <?php echo $form->labelEx($model, 'title'); ?>
+	  <?php echo $form->textField($model, 'title', array('size' => 91, 'maxlength' => 128)); ?>
+	  <?php echo $form->error($model, 'title'); ?>
+   </div>
 
-    <div class="row">
-        <?php echo $form->labelEx($model,'image'); ?>
-        <?php echo $form->textField($model,'image'); ?>
-        <?php echo $form->error($model,'image'); ?>
-    </div>
+   <div class="row">
+	  <?php echo $form->labelEx($model, 'content'); ?>
+	  <?php echo $form->textArea($model, 'content', array('rows' => 20, 'cols' => 70, 'class' => 'redactor')); ?>
+	  <?php echo $form->error($model, 'content'); ?>
+   </div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'tags'); ?>
-		<?php echo $form->textArea($model,'tags',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'tags'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'status'); ?>
-		<?php echo $form->textField($model,'status'); ?>
-		<?php echo $form->error($model,'status'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'author_id'); ?>
-		<?php echo $form->textField($model,'author_id'); ?>
-		<?php echo $form->error($model,'author_id'); ?>
-	</div>
-
-	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-	</div>
+   <?php if (!Yii::app()->user->isGuest): ?>
+   <div class="row">
+	  <?php echo $form->labelEx($model, 'tags'); ?>
+	  <?php echo $form->textArea($model, 'tags', array('rows' => 2, 'cols' => 70)); ?>
+	  <?php echo $form->error($model, 'tags'); ?>
+   </div>
+   <?php endif ?>
 
 
-    <?php //echo $form->dropDownList($model,'status',Lookup::items('PostStatus')); ?>
-<?php $this->endWidget(); ?>
+   <?php if (User::model()->hasFullAccess()): ?>
+   <div class="row">
+	  <?php echo $form->labelEx($model, 'status'); ?>
+	  <?php echo $form->dropDownList($model, 'status', Lookup::items('PostStatus'), array('selected' => '2')); ?>
+	  <?php echo $form->error($model, 'status'); ?>
+   </div>
+   <?php endif; ?>
+
+   <div class="row buttons">
+	  <?php echo CHtml::submitButton($model->isNewRecord ? 'Создать' : 'Изменить'); ?>
+   </div>
+   <?php $this->endWidget(); ?>
 
 </div><!-- form -->

@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class YiiDebugToolbarRoute</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class YiiDebugToolbarRoute</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">YiiDebugToolbarRouter represents an ...</p>
+<p class="description"><p>Description of YiiDebugToolbarRouter</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Sergey Malyshev &lt;<a href="mailto:malyshev.php@gmail.com">malyshev.php@gmail.com</a>&gt;</li>
+				<li><span class="field">version:</span> $Id$</li>
+				<li><span class="field">since:</span> 1.1.7</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_protected---extensions---yii-debug-toolbar---YiiDebugToolbarRoute.php.html">/protected/extensions/yii-debug-toolbar/YiiDebugToolbarRoute.php</a> (line <span class="field">18</span>)
+		</p>
+		
+				
+		<pre>CLogRoute
+   |
+   --YiiDebugToolbarRoute</pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																																<div class="var-title">
+					<span class="var-type">mixed</span>
+					<a href="#$ipFilters" title="details" class="var-name">$ipFilters</a>
+				</div>
+																<div class="var-title">
+					<span class="var-type">bool</span>
+					<a href="#$openLastPanel" title="details" class="var-name">$openLastPanel</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																				<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#matchIpMask" title="details" class="method-name">matchIpMask</a>
+											(<span class="var-type">integer|string</span>&nbsp;<span class="var-name">$ip</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$maskIp</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maskBits</span>, <span class="var-type">integer|string</span>&nbsp;<span class="var-name">$matchIp</span>)
+									</div>
+																																								
+												<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#allowIp" title="details" class="method-name">allowIp</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$ip</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#collectLogs" title="details" class="method-name">collectLogs</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$logger</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$processLogs</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getEndTime" title="details" class="method-name">getEndTime</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getLoadTime" title="details" class="method-name">getLoadTime</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getPanels" title="details" class="method-name">getPanels</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getStartTime" title="details" class="method-name">getStartTime</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#getToolbarWidget" title="details" class="method-name">getToolbarWidget</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#init" title="details" class="method-name">init</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#initComponents" title="details" class="method-name">initComponents</a>
+										()
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#onBeginRequest" title="details" class="method-name">onBeginRequest</a>
+											(<span class="var-type">CEvent</span>&nbsp;<span class="var-name">$event</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#onEndRequest" title="details" class="method-name">onEndRequest</a>
+											(<span class="var-type">CEvent</span>&nbsp;<span class="var-name">$event</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#processLogs" title="details" class="method-name">processLogs</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$logs</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPanels" title="details" class="method-name">setPanels</a>
+											(<span class="var-type">array</span>&nbsp;<span class="var-name">$pannels</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$ipFilters" id="$ipFilters"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$ipFilters</span>
+			 = <span class="var-default">array('127.0.0.1','::1')</span>			(line <span class="line-number">37</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">The filters are given in an array, each filter being:</p>
+<p class="description"><p><ul><li>a normal IP (192.168.0.10 or '::1')</li><li>an incomplete IP (192.168.0.* or 192.168.0.)</li><li>a CIDR mask (192.168.0.0/24)</li><li>&quot;*&quot; for everything.</li></ul></p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+<a name="var$openLastPanel" id="$openLastPanel"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">bool</span>
+			<span class="var-name">$openLastPanel</span>
+			 = <span class="var-default"> true</span>			(line <span class="line-number">43</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">If true, then after reloading the page will open the current panel.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodmatchIpMask" id="matchIpMask"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method matchIpMask</span> (line <span class="line-number">217</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Check if an IP matches a CIDR mask.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			matchIpMask
+		</span>
+					(<span class="var-type">integer|string</span>&nbsp;<span class="var-name">$ip</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$maskIp</span>, <span class="var-type">integer</span>&nbsp;<span class="var-name">$maskBits</span>, <span class="var-type">integer|string</span>&nbsp;<span class="var-name">$matchIp</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer|string</span>
+				<span class="var-name">$ip</span><span class="var-description">: IP to check.</span>			</li>
+					<li>
+				<span class="var-type">integer|string</span>
+				<span class="var-name">$matchIp</span><span class="var-description">: Radical of the mask (e.g. 192.168.0.0).</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$maskBits</span><span class="var-description">: Size of the mask (e.g. 24).</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$maskIp</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodallowIp" id="allowIp"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">allowIp</span> (line <span class="line-number">180</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Checks to see if the user IP is allowed by ipFilters.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> whether the user IP is allowed by <a href="../YiiDebugToolbar/YiiDebugToolbarRoute.html#var$ipFilters">ipFilters</a>.</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			allowIp
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$ip</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$ip</span><span class="var-description">: the user IP</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcollectLogs" id="collectLogs"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">collectLogs</span> (line <span class="line-number">164</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			collectLogs
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$logger</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$processLogs</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$logger</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$processLogs</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetEndTime" id="getEndTime"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getEndTime</span> (line <span class="line-number">70</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getEndTime
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetLoadTime" id="getLoadTime"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getLoadTime</span> (line <span class="line-number">75</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getLoadTime
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPanels" id="getPanels"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPanels</span> (line <span class="line-number">60</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getPanels
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetStartTime" id="getStartTime"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getStartTime</span> (line <span class="line-number">65</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getStartTime
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetToolbarWidget" id="getToolbarWidget"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getToolbarWidget</span> (line <span class="line-number">80</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			getToolbarWidget
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinit" id="init"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">init</span> (line <span class="line-number">92</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			init
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinitComponents" id="initComponents"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">initComponents</span> (line <span class="line-number">123</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			initComponents
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodonBeginRequest" id="onBeginRequest"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">onBeginRequest</span> (line <span class="line-number">115</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			onBeginRequest
+		</span>
+					(<span class="var-type">CEvent</span>&nbsp;<span class="var-name">$event</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">CEvent</span>
+				<span class="var-name">$event</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodonEndRequest" id="onEndRequest"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">onEndRequest</span> (line <span class="line-number">159</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			onEndRequest
+		</span>
+					(<span class="var-type">CEvent</span>&nbsp;<span class="var-name">$event</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">CEvent</span>
+				<span class="var-name">$event</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodprocessLogs" id="processLogs"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">processLogs</span> (line <span class="line-number">169</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			processLogs
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$logs</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$logs</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPanels" id="setPanels"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPanels</span> (line <span class="line-number">54</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPanels
+		</span>
+					(<span class="var-type">array</span>&nbsp;<span class="var-name">$pannels</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$pannels</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 30 Jun 2012 12:10:22 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>

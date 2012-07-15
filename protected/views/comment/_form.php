@@ -1,42 +1,31 @@
+<?php
+/**
+ * @var CActiveForm $form
+ * @var Comment $model
+ */
+?>
+
 <div class="form">
 
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'comment-form',
-	'enableAjaxValidation'=>true,
-)); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'content'); ?>
-	</div>
+	<?php // Пока оставил так ?>
+	<?php if($model->isNewRecord): ?>
+	<?php $form = $this->beginWidget('CActiveForm',array('id' => 'comment-form',
+		'action' => Chtml::normalizeUrl(array('comment/create')))); ?>
+	<?php else: ?>
+	<?php $form = $this->beginWidget('CActiveForm', array('id' => 'comment-form')); ?>
+	<?php endif; ?>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'email'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'url'); ?>
-		<?php echo $form->textField($model,'url',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'url'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'post_id'); ?>
-		<?php echo $form->textField($model,'post_id'); ?>
-		<?php echo $form->error($model,'post_id'); ?>
+		<?php echo $form->textArea($model, 'content', array('rows' => 5, 'cols' => 50)); ?>
+		<?php echo $form->error($model, 'content'); ?>
+		<?php if($model->isNewRecord): ?>
+		<?php echo $form->hiddenField($model, 'parent_id') ?>
+		<?php echo $form->hiddenField($model, 'post_id') ?>
+		<?php endif; ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Добавить' : 'Изменить'); ?>
 	</div>
-
-<?php $this->endWidget(); ?>
-
+	<?php $this->endWidget(); ?>
 </div><!-- form -->

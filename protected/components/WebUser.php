@@ -1,17 +1,26 @@
 <?php
-class WebUser extends CWebUser {
-    private $_model = null;
+class WebUser extends CWebUser
+{
+	private $_model = null;
 
-    function getRole() {
-        if($user = $this->getModel()){
-            return $user->role;
-        }
-    }
+	function getRole()
+	{
+		if ($user = $this->getModel())
+			return $user->role->access;
+	}
 
-    private function getModel(){
-        if (!$this->isGuest && $this->_model === null){
-            $this->_model = User::model()->findByPk($this->id, array('select' => 'role'));
-        }
-        return $this->_model;
-    }
+	/**
+	 * @return User - и полезно, и автодополнение будет лучше работать
+	 */
+	public function getModel()
+	{
+		if (!$this->isGuest && $this->_model === null) {
+			$this->_model = User::model()->findByPk($this->id);
+		}
+
+		return $this->_model;
+
+	}
+
+
 }

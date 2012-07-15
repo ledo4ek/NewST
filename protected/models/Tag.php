@@ -53,6 +53,7 @@ class Tag extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+			//'status' => array(self::BELONGS_TO, 'Post', )
 		);
 	}
 
@@ -87,15 +88,15 @@ class Tag extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-    //new
+
     public static function string2array($tags)
     {
-        return preg_split('/\s*,\s*/',trim($tags),-1,PREG_SPLIT_NO_EMPTY);
+        return preg_split('/\s*,\s*/', trim($tags), -1, PREG_SPLIT_NO_EMPTY);
     }
 
     public static function array2string($tags)
     {
-        return implode(', ',$tags);
+        return implode(', ', $tags);
     }
 
     public function updateFrequency($oldTags, $newTags)
@@ -133,24 +134,31 @@ class Tag extends CActiveRecord
         $this->deleteAll('frequency<=0');
     }
 
-    public function findTagWeights($limit=20)
-    {
-        $models=$this->findAll(array(
-            'order'=>'frequency DESC',
-            'limit'=>$limit,
-        ));
+	/**
+	 * Returns tag names and their corresponding weights.
+	 * Only the tags with the top weights will be returned.
+	 * @param integer the maximum number of tags that should be returned
+	 * @return array weights indexed by tag names.
+	 */
+	public function findTagWeights($limit=20)
+	{
+		$models=$this->findAll(array(
+			'order'=>'frequency DESC',
+			'limit'=>$limit,
+		));
 
-        $total=0;
-        foreach($models as $model)
-            $total+=$model->frequency;
+		$total=0;
+		foreach($models as $model)
+			$total+=$model->frequency;
 
-        $tags=array();
-        if($total>0)
-        {
-            foreach($models as $model)
-                $tags[$model->name]=8+(int)(16*$model->frequency/($total+10));
-            ksort($tags);
-        }
-        return $tags;
-    }
+		$tags=array();
+		if($total>0)
+		{
+			foreach($models as $model)
+				$tags[$model->name]=8+(int)(16*$model->frequency/($total+10));
+			ksort($tags);
+		}
+		return $tags;
+	}
+
 }

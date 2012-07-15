@@ -1,37 +1,45 @@
-<div class="view">
-<h1>
+<div class="post">
+   <div class="title"><h2><?php echo CHtml::encode($data->title) ?></h2></div>
 
-	<?php //echo CHtml::encode($data->title);
-    echo CHtml::link(CHtml::encode($data->title), array('view', 'id'=>$data->id));?>
-	<br />
-</h1>
+   <div class="edit">
+	  <?php if ($data->hasAccess()): ?>
+	  <?php echo CHtml::link('', $data->getDeleteUrl(), array('class' => 'delete', 'onclick' => 'return confirm("Вы уверены?")')) ?>
+	  <?php echo CHtml::link('', $data->getUpdateUrl(), array('class' => 'update')) ?>
+	  <?php endif; ?>
+   </div>
 
-    <?php echo Chtml::image($data->image,'',array('width' => '350', 'height' => '250','class' => 'imagetx')); ?>
-    <br />
-
-	<?php echo CHtml::encode(mb_substr($data->content,0,2020,"utf-8")); ?>
-    <br />
-    <br />
-    <?php echo Chtml::link('Читать дальше->',Yii::app()->createUrl('post/view', array('id' => $data->id))); ?>
-	<br />
-
-	<?php echo CHtml::encode($data->tags); ?>
-	<br />
+   <div class="content">
+	  <?php $this->beginWidget('CHtmlPurifier'); ?>
+	  <?php // TODO сделать обработку через модель и обработку одной большой строки ?>
+	  <?php echo CStringHelper::trimContent($data->content) ?>
+	  <?php $this->endWidget(); ?>
+   </div>
 
 
-	<?php echo 'Дата создания:';
-   echo date('d-m-Y H:i:s',$data->create_time); ?>
+   <div class="buttons">
+	  <?php echo CHtml::link('Читать дальше', $data->getUrl(), array('class' => 'button')); ?>
+   </div>
 
+   <ul class="tags">
+	  <?php if ($data->tags == null): ?>
+		<?php echo 'Нет тегов' ?>
+	  <?php else: ?>
+	  <?php echo CHtml::encode($data->tags); ?>
+	  <?php endif; ?>
+   </ul>
 
-	<?php echo 'Дата обновления:';
-   echo date('d-m-Y H:i:s',$data->update_time); ?>
-	<br />
+   <div class="infopanel">
+	  <div class="author">
+		 <?php echo CHtml::link($data->author->username, $data->author->getUrl()); ?>
+	  </div>
+	  <div class="published">
+		 <?php echo CDateHelper::formateDate($data->create_time); ?>
+	  </div>
 
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('author_id')); ?>:</b>
-	<?php echo CHtml::encode($data->author_id); ?>
-	<br />
+	  <div class="count_comments">
+		 <?php echo CHtml::encode($data->commentCount); ?>
+	  </div>
+   </div>
 
-	*/ ?>
 
 </div>

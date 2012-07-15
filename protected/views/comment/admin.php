@@ -4,11 +4,6 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Comment', 'url'=>array('index')),
-	array('label'=>'Create Comment', 'url'=>array('create')),
-);
-
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
 	$('.search-form').toggle();
@@ -38,22 +33,19 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'comment-grid',
-	'dataProvider'=>$model->search(),
-	'filter'=>$model,
-	'columns'=>array(
-		'id',
-		'content',
-		'status',
-		'create_time',
-		'author',
-		'email',
-		/*
-		'url',
-		'post_id',
-		*/
-		array(
-			'class'=>'CButtonColumn',
-		),
+		'id'=>'comment-grid',
+		'dataProvider'=>$model->search(),
+		'filter'=>$model,
+		'columns'=>array(
+		   'author.username',
+		   'content',
+			'create_time',
+			/*
+		 'url',
+		 'post_id',
+		 */
+			array(
+				'class'=>'CButtonColumn',
+			),
 	),
 )); ?>

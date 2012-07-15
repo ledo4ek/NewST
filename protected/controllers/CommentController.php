@@ -2,11 +2,18 @@
 
 class CommentController extends Controller
 {
+
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
 	 */
-	public $layout='//layouts/column2';
+	public $layout = '//layouts/column2';
+
+	/**
+	 * Returns the data model based on the primary key given in the GET variable.
+	 * If the data model is not found, an HTTP exception will be raised.
+	 */
+	private $_model;
 
 	/**
 	 * @return array action filters
@@ -23,23 +30,24 @@ class CommentController extends Controller
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
 	public function accessRules()
 	{
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'users'=>array('*'),
+			array ('allow', // allow all users to perform 'list' and 'view' actions
+				'actions' => array('view'), 'users' => array('*'),
 			),
-			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+			array ('allow', // allow authenticated user to perform any action
+				'actions' => array('update', 'delete', 'create', 'vote'), 'users' => array('@'),
 			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
+			array ('allow', // allow authenticated user to perform any action
+				'actions' => array('admin', 'approve'), 'roles' => array('administrator', 'moderator'),), array(
+				'deny', // deny all users
+				'users' => array('*'),
 			),
 		);
 	}
@@ -50,32 +58,27 @@ class CommentController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+		$this->render('view', array('model' => $this->loadModel($id),));
 	}
 
 	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
+	 * Method Post
+	/*/
+
 	public function actionCreate()
 	{
-		$model=new Comment;
+		$comment = new Comment;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		// TODO Сделать валидацию на стороне клиента
 
-		if(isset($_POST['Comment']))
+		if (isset($_POST['Comment']))
 		{
-			$model->attributes=$_POST['Comment'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			$comment->attributes = $_POST['Comment'];
+			$comment->save();
 		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+		echo json_encode($comment);
+		Yii::app()->end();
 	}
 
 	/**
@@ -85,21 +88,29 @@ class CommentController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-		$model=$this->loadModel($id);
+		$model = Comment::model()->findByPk($id);
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
-
-		if(isset($_POST['Comment']))
+		if ($model->hasAccess())
 		{
-			$model->attributes=$_POST['Comment'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
-		}
+			$this->performAjaxValidation($model);
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+			if (isset($_POST['Comment']))
+			{
+				$model->attributes = $_POST['Comment'];
+				if ($model->save())
+				{
+					if(User::model()->hasFullAccess())
+						$this->redirect(array('admin'));
+
+					$this->redirect($model->getUrl());
+				}
+			}
+
+			$this->render('update', array(
+				'model' => $model,));
+		}
+		else
+			throw new CHttpException(404, 'Запрашиваемая страница не существует.');
 	}
 
 	/**
@@ -107,35 +118,26 @@ class CommentController extends Controller
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
+
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
+		$model = $this->loadModel($id);
+
+		if ($model && !Yii::app()->request->isPostRequest && $model->hasAccess())
 		{
-			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
+			if (Yii::app()->request->isAjaxRequest)
+			{
+				$data = array('id' => $id, 'countComments' => $model->post->commentCount - 1);
+			}
 
-			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$model->delete();
 		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$dataProvider=new CActiveDataProvider('Comment', array(
-            'criteria'=>array(
-                'with'=>'post',
-                'order'=>'t.status, t.create_time DESC',
-            )
-        ));
-		$this->render('index',array(
-			'dataProvider'=>$dataProvider,
-		));
+		if (!Yii::app()->request->isAjaxRequest)
+			$this->redirect($model->post->getUrl() . "#comments");
+
+		echo json_encode($data);
+		Yii::app()->end();
 	}
 
 	/**
@@ -143,27 +145,64 @@ class CommentController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Comment('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Comment']))
-			$model->attributes=$_GET['Comment'];
+		if (User::model()->hasFullAccess())
+		{
+			$model = new Comment('search');
+			$model->unsetAttributes(); // clear any default values
+			// Лучше всегда для таких целей POST использовать
+			if (isset($_GET['Comment']))
+				$model->attributes = $_GET['Comment'];
 
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+			$this->render('admin', array(
+				'model' => $model,));
+		}
+		else
+			throw new CHttpException(404, 'Запрашиваемая страница не существует.');
+
 	}
 
-	/**
-	 * Returns the data model based on the primary key given in the GET variable.
-	 * If the data model is not found, an HTTP exception will be raised.
-	 * @param integer the ID of the model to be loaded
-	 */
+	// Не понял, зачем модель кэшировать
 	public function loadModel($id)
 	{
-		$model=Comment::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+		if ($this->_model === null)
+		{
+			if (isset($id))
+			{
+				if (Yii::app()->user->isGuest)
+					$condition = 'status=' . Comment::STATUS_PUBLISHED;
+				else
+					$condition = '';
+				$this->_model = Comment::model()->findByPk($id, $condition);
+			}
+			if ($this->_model === null)
+				throw new CHttpException(404, 'Запрашиваемая страница не существует.');
+		}
+		return $this->_model;
+	}
+
+
+	public function actionVote()
+	{
+		$id = $_POST['id'];
+		$vote = $_POST['vote'];
+
+		$comment = Comment::model()->findByPk($id);
+
+		if (Yii::app()->request->isPostRequest && $comment && ($vote === Vote::VALUE_PLUS || $vote === Vote::VALUE_MINUS))
+		{
+			if ($comment->canVote())
+			{
+				$model = new Vote;
+				$model->comment_id = $id;
+				$model->author_id = Yii::app()->user->id;
+				$model->value = $vote === Vote::VALUE_PLUS ? 1 : -1;
+
+				$model->save();
+			}
+		}
+		else   // TODO возможна ли такая ситуация?
+			throw new CHttpException(404, 'Запрашиваемая страница не существует.');
+
 	}
 
 	/**
@@ -172,21 +211,11 @@ class CommentController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='comment-form')
+		if (isset($_POST['ajax']) && $_POST['ajax'] === 'comment-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
 
-    public function actionsApprove()
-    {
-        if(Yii::app()->request->isPostRequest)
-        {$comment=$this->loadModel();
-            $comment->approve();
-            $this->redirect(array('index'));
-        }
-        else
-            throw new CHttpException(400,'Invalid request...');
-    }
 }

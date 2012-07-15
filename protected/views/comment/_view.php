@@ -1,38 +1,28 @@
-<div class="view">
+<div class="comment_item" id="comment_<?php echo $data->id; ?>">
+   <div class="info">
+	  <?php echo CHtml::link($data->author->username, $data->author->getUrl(), array('class' => 'username')); ?>
+	  <div class="datetime">
+		 <?php echo CDateHelper::formateDate($data->create_time) ?>
+	  </div>
+	  <span class="view">
+	  	<?php echo CHtml::link(Chtml::image("/blog/images/tools/view.png", "view"), "#comment_" . $data->id, array('class' => 'cid',)); ?>
+	 </span>
+	  <?php if ($data->hasAccess()): ?>
+	  <span class="update">
+		 <?php echo CHtml::link(Chtml::image("/blog/images/tools/update.png", "update"), $data->getUpdateUrl()) ?>
+	  </span>
+	  <span class="delete">
+		 <?php echo CHtml::link(Chtml::image("/blog/images/tools/delete.png", "delete"), $data->getDeleteUrl(), array('onclick' => 'return confirm("Вы уверены?")')) ?>
+	  </span>
+	  <?php endif; ?>
+   </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('id')); ?>:</b>
-	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
-	<br />
+   <div class="content">
+	  <?php // TODO CHtml::encode() ?>
+	  <?php $this->beginWidget('CHtmlPurifier'); ?>
+	  <?php echo $data->content; ?>
+	  <?php $this->endWidget(); ?>
+   </div>
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('content')); ?>:</b>
-	<?php echo CHtml::encode($data->content); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('status')); ?>:</b>
-	<?php echo CHtml::encode($data->status); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('create_time')); ?>:</b>
-	<?php echo CHtml::encode($data->create_time); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('author')); ?>:</b>
-	<?php echo CHtml::encode($data->author); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('email')); ?>:</b>
-	<?php echo CHtml::encode($data->email); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('url')); ?>:</b>
-	<?php echo CHtml::encode($data->url); ?>
-	<br />
-
-	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('post_id')); ?>:</b>
-	<?php echo CHtml::encode($data->post_id); ?>
-	<br />
-
-	*/ ?>
-
+   <? echo CHtml::checkBox('Selected[]', false, array('value' => $data->id))    ?>
 </div>

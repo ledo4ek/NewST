@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class Tag</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class Tag</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This is the model class for table &quot;{{tag}}&quot;.</p>
+<p class="description"><p>The followings are the available columns in table '{{tag}}':</p></p>
+		<p class="notes">
+			Located in <a class="field" href="_protected---models---Tag.php.html">/protected/models/Tag.php</a> (line <span class="field">11</span>)
+		</p>
+		
+				
+		<pre>CActiveRecord
+   |
+   --Tag</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																				<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#array2string" title="details" class="method-name">array2string</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+									</div>
+																																<div class="method-definition">
+					static 						<span class="method-result"><a href="../default/Tag.html">Tag</a></span>
+										<a href="#model" title="details" class="method-name">model</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span> = <span class="var-default">__CLASS__</span>])
+									</div>
+																																																<div class="method-definition">
+					static 						<span class="method-result">void</span>
+										<a href="#string2array" title="details" class="method-name">string2array</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+									</div>
+																								
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addTags" title="details" class="method-name">addTags</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#attributeLabels" title="details" class="method-name">attributeLabels</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#findTagWeights" title="details" class="method-name">findTagWeights</a>
+											([<span class="var-type">integer</span>&nbsp;<span class="var-name">$limit</span> = <span class="var-default">20</span>])
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#relations" title="details" class="method-name">relations</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#removeTags" title="details" class="method-name">removeTags</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#rules" title="details" class="method-name">rules</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">CActiveDataProvider</span>
+										<a href="#search" title="details" class="method-name">search</a>
+										()
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#tableName" title="details" class="method-name">tableName</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#updateFrequency" title="details" class="method-name">updateFrequency</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$oldTags</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$newTags</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodarray2string" id="array2string"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method array2string</span> (line <span class="line-number">97</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			array2string
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tags</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmodel" id="model"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method model</span> (line <span class="line-number">18</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the static model of the specified AR class.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the static model class</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../default/Tag.html">Tag</a></span>
+		<span class="method-name">
+			model
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$className</span> = <span class="var-default">__CLASS__</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$className</span><span class="var-description">: active record class name.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodstring2array" id="string2array"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method string2array</span> (line <span class="line-number">92</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result">void</span>
+		<span class="method-name">
+			string2array
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tags</span>			</li>
+				</ul>
+		
+			
+	</div>
+
+<a name="methodaddTags" id="addTags"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addTags</span> (line <span class="line-number">110</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addTags
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tags</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodattributeLabels" id="attributeLabels"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">attributeLabels</span> (line <span class="line-number">63</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> customized attribute labels (name=&gt;label)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			attributeLabels
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodfindTagWeights" id="findTagWeights"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">findTagWeights</span> (line <span class="line-number">143</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns tag names and their corresponding weights.</p>
+<p class="description"><p>Only the tags with the top weights will be returned.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> weights indexed by tag names.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			findTagWeights
+		</span>
+					([<span class="var-type">integer</span>&nbsp;<span class="var-name">$limit</span> = <span class="var-default">20</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$limit</span><span class="var-description">: the maximum number of tags that should be returned</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrelations" id="relations"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">relations</span> (line <span class="line-number">51</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> relational rules.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			relations
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodremoveTags" id="removeTags"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeTags</span> (line <span class="line-number">127</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			removeTags
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$tags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$tags</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrules" id="rules"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">rules</span> (line <span class="line-number">34</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> validation rules for model attributes.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			rules
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodsearch" id="search"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">search</span> (line <span class="line-number">76</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retrieves a list of models based on the current search/filter conditions.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the data provider that can return the models based on the search/filter conditions.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">CActiveDataProvider</span>
+		<span class="method-name">
+			search
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtableName" id="tableName"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">tableName</span> (line <span class="line-number">26</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the associated database table name</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			tableName
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodupdateFrequency" id="updateFrequency"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">updateFrequency</span> (line <span class="line-number">102</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			updateFrequency
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$oldTags</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$newTags</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$oldTags</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$newTags</span>			</li>
+				</ul>
+		
+			
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 30 Jun 2012 12:10:19 +0200 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.4</a>
+	</p>
+	</div></body>
+</html>
